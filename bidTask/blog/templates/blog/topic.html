@@ -1,0 +1,16 @@
+{% extends 'blog/base.html' %}
+    {% block content %}
+    <h2 class="topicHead">{{ topic }}</h2>
+    {% for entry in entries %}
+    <div class="entryBlock">
+        {{ entry.text|linebreaks }}
+        <a class="entryFix" href="{% url 'blog:edit_entry' entry.id %}">Редактировать</a>
+    </div>
+{% endfor %}
+    <p>
+        <a class="addLink addCat" href="{% url 'blog:new_entry' topic.id %}">Новая запись</a>
+    </p>
+    <div class="topicBack">
+        <a href="{% url 'blog:categories' %}">Назад</a>
+    </div>
+{% endblock content %}

@@ -1,0 +1,15 @@
+{% extends "Blog/base.html" %}
+
+{% block content %}
+    <div class="formContainer">
+    <h2 class="formHead">Добавить новую тему:</h2>
+    <form class="formAdd" action="{% url 'blog:new_topic' category.id %}" method='post'>
+        {% csrf_token %}
+        {{ form }}
+        <button class="submitForm" name="submit">Добавить тему</button>
+    </form>
+    </div>
+    <div class="topicBack">
+        <a href="{% url 'blog:categories' %}">Назад</a>
+    </div>
+{% endblock content %}

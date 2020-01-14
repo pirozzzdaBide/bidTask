@@ -1,0 +1,17 @@
+{% extends "blog/base.html" %}
+{% block content %}
+<a class="addLink addCat" href="{% url 'blog:new_category' %}">Добавить категорию</a>
+<div class="categoryFlex">
+        {% for category in categories %}
+        <div class="category">
+            <h3>{{ category }}</h3>
+            {% for topic in topics %}
+            {% if topic.category == category %}
+            <h4><a href="{% url 'blog:topic' topic.id %}"> {{ topic }} </a></h4>
+            {% endif %}
+            {% endfor %}
+            <a class="addLink" href="{% url 'blog:new_topic' category.id %}">Добавить тему</a>
+        </div>
+        {% endfor %}
+</div>
+{% endblock content %}

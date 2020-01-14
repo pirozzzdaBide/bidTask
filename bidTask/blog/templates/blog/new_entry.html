@@ -1,0 +1,12 @@
+{% extends "blog/base.html" %}
+{% block content %}
+    <p><a class="txtAreaBack" href="{% url 'blog:topic' topic.id %}">{{ topic }}</a></p>
+    <div class="txtAreaForm">
+        <p>Добавить новый пост:</p>
+        <form class="txtAreaForm" action="{% url 'blog:new_entry' topic.id %}" method='post'>
+            {% csrf_token %}
+            {{ form }}
+            <button name='submit'>Добавить пост</button>
+        </form>
+    </div>
+{% endblock content %}
